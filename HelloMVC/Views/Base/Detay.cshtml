@@ -1,0 +1,17 @@
+﻿@model DetayVM
+@{
+    ViewData["Title"] = "Detay";
+    //razer
+    // viewstartta hangisi belirtildiyse o layoutu kullanır
+}
+
+<h3>Ogrenci Detay </h3>
+<p> ViewData ile gelen ögrenci @(((Ogrenci)ViewData["Ogrenci"]).Ad)</p>
+<p> ViewBag ile gelen ögrenci @ViewBag.Student.Ad</p>
+<p>Model ile gelen ögrenci @Model.Ogretmen.Ad</p>
+<br />  
+
+<p>Html Helpers: Html etiketlerini yazdırmaya yardımcı olmak için kullanılan C# metodları. Bu metodlar ile sadece C# kullanılarak HTML etiketleri oluşturulabilir. Orn Html.ActionLink() gibi.</p>
+<p>Render: Razar syntaxında C# ile gerçekleştirilen kodların tarayıcılar tarafından anlaşılabilmesi için yapılan. C#->HTML</p>
+<p>Tag Halper: HTML etiketlerini oluştururken kullandığımız asp- ile paşlayan yardımcı attributler.</p>
+
