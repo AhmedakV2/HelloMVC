@@ -9,8 +9,17 @@ namespace HelloMVC.Controllers
         public IActionResult Index()
         {
 
+            var list = new List<Ogrenci>() 
+            { 
+                new Ogrenci{Ad="Ali", Soyad="Veli"},
+                new Ogrenci{Ad="Ahmed", Soyad="Mehmed"},
 
-            return View();
+
+            };
+
+            
+
+            return View(list);
         }
         public ViewResult Detay()
         {

@@ -1,7 +1,26 @@
-﻿
+﻿@model IEnumerable<Ogrenci> //List <Ogrenci> de olabilir ama IEnumerable daha geneldir. IEnumerable, bir koleksiyonun üzerinde dolaşmak için kullanılan bir arabirimdir. List ise, belirli bir türdeki öğeleri depolamak ve yönetmek için kullanılan bir sınıftır. IEnumerable, sadece koleksiyonun üzerinde dolaşmak için gerekli olan yöntemleri tanımlar, ancak List gibi bir sınıf, ekleme, silme ve diğer işlemleri de destekler.
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Ogrenci Listesi</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ad</td>
+                <td>@item.Soyad</td>
+            </tr>
+        }
+	</tbody>
+
+
+
 
