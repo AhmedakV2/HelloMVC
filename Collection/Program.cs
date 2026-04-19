@@ -45,71 +45,88 @@ namespace Collection
             // test2.value1 = "Gazi";
             // test2.value2 = "Üniversitesi";
 
-            ITest d = new Deneme();
-            d.Yazdir("Gazi Üniversitesi");
-            //t.Denemesayi = 10;
-
-
-            //Deneme d = new Deneme();
+            //ITest d = new Deneme();
             //d.Yazdir("Gazi Üniversitesi");
-            //d.Denemesayi = 10;
+            ////t.Denemesayi = 10;
 
-            d=new Deneme2();
-            d.Yazdir("Gazi Üniversitesi");
+
+            ////Deneme d = new Deneme();
+            ////d.Yazdir("Gazi Üniversitesi");
+            ////d.Denemesayi = 10;
+
+            //d=new Deneme2();
+            //d.Yazdir("Gazi Üniversitesi");
         }
     }
+
+    //interface ITest
+    //{
+    //    void Yazdir(string value);
+    //}
+
+    //class Deneme : ITest
+    //{
+
+    //    public int Denemesayi { get; set; }
+    //    public void Yazdir(string value)
+    //    {
+    //        Console.WriteLine(value);
+    //    }
+    //}
+
+    //class Deneme2 : ITest
+    //{
+
+    //    public int Deneme2sayi { get; set; }
+    //    public void Yazdir(string value)
+    //    {
+    //        Console.WriteLine(value);
+    //    }
+    //}
+
+
+
 
     //Generic class: Tip güvenliği vardır. Performans yüksektir. Boxing-Unboxing işlemi yapılmaz.
-    class Test<T> 
+    class DBHelper<T> where T : BaseEntity
     {
-        public T value1;
-        public T value2;
+        bool Ekle(T value) { return true; }
 
-        //public void Yazdir()
-        //{
-        //    Console.WriteLine(value1 + value2);
-        //}
+        bool Guncelle(T entity) { return true; }
 
+        bool Sil(int id) { return true; }
 
-        void Ekleme(T value) {
-        
-            //DBye ekleme işlemi yapılır.
-        }
+        T GetEntity(int id) { return null; }
 
-
-
-
-    }
-
-    interface ITest
-    {
-        void Yazdir(string value);
-    }
-
-    class Deneme : ITest
-    {
-
-        public int Denemesayi { get; set; }
-        public void Yazdir(string value)
+        List<T> GetEntities()
         {
-           Console.WriteLine(value);
+            return new List<T>();
         }
+
+
+
+
     }
 
-    class Deneme2 : ITest
+
+    class BaseEntity
     {
+        public DateTime CreatedDate { get; set; }
 
-        public int Deneme2sayi { get; set; }
-        public void Yazdir(string value)
-        {
-            Console.WriteLine(value);
-        }
     }
 
+    class Ogrenci : BaseEntity { 
 
-}
+        public int Id { get; set; }
+
+        public string Ad {  get; set; }
+
+    }
+
+} 
 
 
 //Interface'ler bir class'ın base'i olarak kullanıldıklarında, calss içerisinde base interface'in gövdesi olmayan tüm üyeleri bulmak zorundadır.
 //Farklı class!larda aynı interface'ler base olarak kullanılırsa,bu interface referansı ile bu classların nesneleri temsil edilebilir.
 //Bu açılardan,Interface'ler classlar arası kullanılan bir standart gibi düşünülebilir.
+//class ve struct farkları bil 

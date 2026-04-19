@@ -2,11 +2,11 @@
 {
     public class Ogretmen
     {
+
+        public int Id { get; set; }
         public string Ad { get; set; }
         public string Soyad { get; set; }
-        public override string ToString()
-        {
-            return $"{this.Ad} {this.Soyad}";
-        }
+        public override string ToString() => $"{this.Ad} {this.Soyad}";
+
     }
 }

@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace HelloMVC
 {
     public class Program
@@ -8,6 +10,13 @@ namespace HelloMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            builder.Services.AddDbContext<Data.AppDbContext>(options =>
+                options.UseSqlServer(connectionString));
+
+
 
             var app = builder.Build();
 

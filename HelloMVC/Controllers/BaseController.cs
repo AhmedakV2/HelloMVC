@@ -1,23 +1,47 @@
-﻿using HelloMVC.Models;
+﻿using HelloMVC.Data;
+using HelloMVC.Models;
 using HelloMVC.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HelloMVC.Controllers
 {
     public class BaseController : Controller
     {
+
+        // EF Core veritabanı oturumu için DbContext referansı
+        private readonly AppDbContext _context;
+
+        // DI container constructor injection ile DbContext'i sağlar
+        public BaseController(AppDbContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
 
-            var list = new List<Ogrenci>() 
-            { 
-                new Ogrenci{Ad="Ali", Soyad="Veli"},
-                new Ogrenci{Ad="Ahmed", Soyad="Mehmed"},
+            // Veritabanındaki ögrencileri çeker, boşsa seed data ekler
+            var list = _context.Ogrenciler.ToList();
+
+            if (list.Count == 0)
+            {
+                list = new List<Ogrenci>()
+                {
+                    new Ogrenci{Ad="Ali", Soyad="Veli"},
+                    new Ogrenci{Ad="Ahmed", Soyad="Mehmed"},
 
 
-            };
+                };
 
-            
+                // Seed verileri veritabanına ekleyip kaydeder
+                _context.Ogrenciler.AddRange(list);
+                _context.SaveChanges();
+            }
+
+
 
             return View(list);
         }
@@ -40,10 +64,10 @@ namespace HelloMVC.Controllers
             ViewData["Ogrenci"] = ogr;
             ViewBag.Student = ogr;
 
-            return View("Detay", vm);  
-            
-            
-            
+            return View("Detay", vm);
+
+
+
         }
 
         //viewdata veri taşıma yöntemdir Key-Value Pair şeklinde çalışır. object tipinde veri tutar.
