@@ -88,7 +88,8 @@ namespace Collection
 
 
     //Generic class: Tip güvenliği vardır. Performans yüksektir. Boxing-Unboxing işlemi yapılmaz.
-    class DBHelper<T> where T : BaseEntity
+    class DBHelper<T> where T : BaseEntity // where T : BaseEntity ifadesi, T tipinin BaseEntity sınıfından türemiş olması gerektiğini belirtir. Bu sayede, DBHelper sınıfı sadece BaseEntity sınıfından türemiş türlerle çalışabilir.
+       
     {
         bool Ekle(T value) { return true; }
 
