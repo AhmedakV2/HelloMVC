@@ -1,4 +1,4 @@
-﻿    namespace HelloMVC.Models.ViewModels
+﻿namespace HelloMVC.Models.ViewModels
 {
     public class DetayVM
     {

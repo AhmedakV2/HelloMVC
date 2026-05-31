@@ -4,11 +4,13 @@
 }
 
 <h1>Ogrenci Listesi</h1>
-<table class="table table-striped">
+<table class="table">
     <thead>
         <tr>
             <th>Ad</th>
             <th>Soyad</th>
+            <th>Numara</th>
+            <th>İşlem</th>
         </tr>
     </thead>
     <tbody>
@@ -17,6 +19,10 @@
             <tr>
                 <td>@item.Ad</td>
                 <td>@item.Soyad</td>
+                <td>@item.Numara</td>
+                <td>
+                    <a asp-action="OgrenciDetay" asp-route-id="@item.OgrenciId" class="btn btn-primary">Detay</a>
+                </td>
             </tr>
         }
 	</tbody>

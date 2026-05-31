@@ -9,7 +9,7 @@ namespace HelloMVC.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=OkulDbSube2MVC;Integrated Security=true;TrustServerCertificate=true");
+            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=OkulDbSube2MVC;Trusted_Connection=True;TrustServerCertificate=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

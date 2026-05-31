@@ -1,17 +1,38 @@
-﻿@model DetayVM
+﻿@using HelloMVC.Models.ViewModels
+@model DetayVM
+
 @{
     ViewData["Title"] = "Detay";
-    //razer
-    // viewstartta hangisi belirtildiyse o layoutu kullanır
+    // Razor viewstart'ta hangisi belirtildiyse o layout'u kullanır.
 }
 
-<h3>Ogrenci Detay </h3>
-<p> ViewData ile gelen ögrenci @(((Ogrenci)ViewData["Ogrenci"]).Ad)</p>
-<p> ViewBag ile gelen ögrenci @ViewBag.Student.Ad</p>
-<p>Model ile gelen ögrenci @Model.Ogretmen.Ad</p>
-<br />  
+<h3>Öğrenci ve Öğretmen Detayları</h3>
 
-<p>Html Helpers: Html etiketlerini yazdırmaya yardımcı olmak için kullanılan C# metodları. Bu metodlar ile sadece C# kullanılarak HTML etiketleri oluşturulabilir. Orn Html.ActionLink() gibi.</p>
-<p>Render: Razar syntaxında C# ile gerçekleştirilen kodların tarayıcılar tarafından anlaşılabilmesi için yapılan. C#->HTML</p>
-<p>Tag Halper: HTML etiketlerini oluştururken kullandığımız asp- ile paşlayan yardımcı attributler.</p>
+<ul>
+    <li>
+        <b>ViewData ile gelen öğrenci:</b> @(((HelloMVC.Models.Ogrenci)ViewData["Ogrenci"]).Ad)
+    </li>
+    <li>
+        <b>ViewBag ile gelen öğrenci:</b> @ViewBag.Student.Ad
+    </li>
+    <li>
+        <b>ViewModel (Model) ile gelen öğretmen:</b> @Model.Ogretmen.Ad @Model.Ogretmen.Soyad
+    </li>
+    <li>
+        <b>ViewModel (Model) ile gelen öğrenci:</b> @Model.Ogrenci.Ad
+    </li>
+</ul>
 
+<hr />
+
+<h4>Faydalı Bilgiler:</h4>
+<p>
+    <b>Html Helpers:</b> Html etiketlerini yazdırmaya yardımcı olmak için kullanılan C# metodları.
+    Bu metodlar ile sadece C# kullanılarak HTML etiketleri oluşturulabilir. Örn: <code>Html.ActionLink()</code> gibi.
+</p>
+<p>
+    <b>Render:</b> Razor syntax'ında C# ile gerçekleştirilen kodların tarayıcılar tarafından anlaşılabilmesi için yapılan dönüştürme işlemi. (C# -> HTML)
+</p>
+<p>
+    <b>Tag Helper:</b> HTML etiketlerini oluştururken kullandığımız <code>asp-</code> ile başlayan yardımcı attribute'ler.
+</p>
